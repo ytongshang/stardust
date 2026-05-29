@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python (article2md scripts, uv)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Transient / generated
+outputs/
+*.tmp
+*.log
