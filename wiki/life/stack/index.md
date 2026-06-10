@@ -2,7 +2,7 @@
 title: Stack — Yatoro System Map
 type: index
 created: 2026-05-27
-updated: 2026-05-28
+updated: 2026-05-30
 tags:
   - life
   - stack
@@ -12,6 +12,7 @@ sources:
   - "Slock thread #yatoro:1c5eacba — stack reorg Phase 1 (2026-05-27)"
   - "Slock task #8 #yatoro:aca60753 — memory system survey (2026-05-28)"
   - "Slock task #9 #yatoro:02318f5f — remove knowledge-curator from current docs (2026-05-28)"
+  - "Slock task #11 #yatoro:60f8bbf7 — memory pipeline executable design (2026-05-30)"
   - "Slock thread #life:a361fe23"
   - "Slock thread #workflow:7c1e1588"
 ---
@@ -28,7 +29,8 @@ sources:
 | skills / CLI / wiki / monorepo 的物理路径在哪？CLI shim 指哪？ | [[life/stack/resources\|Resources]] |
 | 我们这套系统能做什么？已有 capability 有哪些？ | [[life/stack/capabilities\|Capabilities]] |
 | 当前 Agent 团队有哪些角色？谁负责什么？ | [[life/stack/agents\|Agents]] |
-| Memory 怎么分层、怎么沉淀、AutoDream 怎么做？ | [[life/stack/memory\|Memory]] |
+| Memory 怎么分层、开源实现怎么做？ | [[life/stack/memory\|Memory]] |
+| Yatoro 怎么增量发现会话、抽候选、晋升 wiki/skill/automation？ | [[life/stack/memory-pipeline\|Memory Pipeline]] |
 | 当前已知的能力缺口和待办？ | [[life/stack/gaps\|Gaps]] |
 | 历史违规复盘和经验？ | [[life/stack/case-studies\|Case Studies]] |
 | 完整工作流 SOP 是什么？ | [[life/workflows/request-to-automation\|Request to Automation]] |

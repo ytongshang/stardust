@@ -2,7 +2,7 @@
 title: Workspaces
 type: workspaces
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-30
 tags:
   - life
   - stack
@@ -12,6 +12,7 @@ tags:
 sources:
   - "Slock thread #life:a361fe23"
   - "Slock thread #yatoro:1c5eacba — stack reorg Phase 1"
+  - "Slock task #11 #yatoro:60f8bbf7 — confirmed Git-backed Stardust-Wiki path 2026-05-30"
 migrated-from:
   - wiki/life/workspaces/index.md#L1-L78
   - wiki/life/capabilities/index.md#L117-L122
@@ -24,7 +25,7 @@ migrated-from:
 ## 原则
 
 - 先确认 workspace 和现有能力，再开始实现。
-- 本页只纳管主要入口目录：`~/work`、iCloud Obsidian vault、全局工具状态目录。
+- 本页只纳管主要入口目录：`/Users/rancune/Work/rancune`、Git-backed Stardust-Wiki、全局工具状态目录。
 - 未列出的目录默认不主动扫描、不总结、不纳管；需要时由用户明确给出路径或授权。
 - 现在先不拆成多个文件。等某一类目录稳定需要细规则时，再拆 `work.md` / `icloud.md` / `tool-state.md`。
 
@@ -33,12 +34,12 @@ migrated-from:
 | 任务类型 | 先看哪里 |
 |---|---|
 | 代码仓库、Yatoro、Claude Code repo、公司/开源项目、脚本 | [[#Work Root]] |
-| Obsidian wiki、VK、长期知识、Life/LLM SOP | [[#iCloud Obsidian]] |
+| Obsidian wiki、VK、长期知识、Life/LLM SOP | [[#Git-backed Stardust-Wiki]] |
 | Claude/Codex/Slock/Yatoro CLI 配置、sessions、agent workspace、本地状态 | [[#Global Tool State]] |
 
 ## Work Root
 
-- **Path**: `/Users/rancune/work`
+- **Path**: `/Users/rancune/Work/rancune`
 - **Purpose**: 本机主要代码和项目工作区入口。
 - **Use when**:
   - 用户提到代码、repo、monorepo、CLI、backend、skills、channel scripts、公司项目、开源项目。
@@ -56,10 +57,10 @@ migrated-from:
   - 进入任何 repo 前先检查 git 状态。
   - 不要改动与当前任务无关的 repo 或文件。
 
-## iCloud Obsidian
+## Git-backed Stardust-Wiki
 
-- **Path**: `/Users/rancune/Library/Mobile Documents/iCloud~md~obsidian/Documents/Stardust-Wiki`
-- **Purpose**: iCloud Obsidian vault / personal VK / long-term knowledge base。
+- **Path**: `/Users/rancune/Work/rancune/stardust`
+- **Purpose**: Git-backed Obsidian-compatible wiki / personal VK / long-term knowledge base。
 - **Use when**:
   - 需要沉淀概念、SOP、工作流、能力地图、workspace map。
   - 需要更新 LLM/Agent 方法论或 Life/practice 工作流。
@@ -67,12 +68,13 @@ migrated-from:
   - `wiki/llm`：LLM / AI / Agent 概念和方法论。
   - `wiki/life`：日常生活、个人工作流、自动化 SOP，含本 `stack/` 系统地图。
 - **Verification commands**:
-  - 写入后等 iCloud sync 完成；多设备场景需主写入设备先完整同步再让其他设备 reindex。
+  - `git -C /Users/rancune/Work/rancune/stardust status --short`：写入前后确认变更范围。
+  - `git -C /Users/rancune/Work/rancune/stardust diff --check`：检查 whitespace / patch 基础问题。
   - Obsidian unresolved-link 面板：批量改 wikilink 后用来确认无坏链。
-  - vault 无 git，回滚靠手动备份；批量改前考虑先 zip 备份关键页。
 - **Caution**:
-  - 遵守 vault 的 `CLAUDE.md` 和 frontmatter 规范。
+  - 遵守 wiki root 的 `CLAUDE.md` 和 frontmatter 规范。
   - 概念/方法论放 `wiki/llm`；具体日常 SOP 和实践放 `wiki/life`。
+  - 不要把 `.git` 放进 iCloud 自动同步目录。
 
 ## Global Tool State
 

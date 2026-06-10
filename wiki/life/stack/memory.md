@@ -2,7 +2,7 @@
 title: Memory
 type: reference
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-05-30
 tags:
   - life
   - stack
@@ -22,11 +22,14 @@ sources:
   - "Slock thread #yatoro:aca60753 msg=423b27c4 — request for detailed storage/scope/evolution breakdown (2026-05-29)"
   - "Slock thread #yatoro:aca60753 msg=7851f932 — focus on open-source implementations, not Yatoro implementation design (2026-05-29)"
   - "Slock task #10 #yatoro:f2ac03a2 — analyze NousResearch/hermes-agent memory implementation (2026-05-29)"
+  - "Slock task #11 #yatoro:60f8bbf7 — Yatoro memory pipeline executable design (2026-05-30)"
 ---
 
 # Memory
 
 > 开源 memory 系统学习笔记。本文暂不设计 Yatoro 实现，重点看这些项目做了什么、怎么存、按什么维度分层、怎么从低层演化到高层、以及 Dream / AutoDream / consolidation 如何整理记忆。
+
+Yatoro 自身的可执行 memory pipeline 设计见 [[life/stack/memory-pipeline|Memory Pipeline]]。
 
 ## 阅读结论
 

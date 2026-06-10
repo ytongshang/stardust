@@ -2,7 +2,7 @@
 title: Resources
 type: resources
 created: 2026-05-27
-updated: 2026-05-27
+updated: 2026-05-30
 tags:
   - life
   - stack
@@ -11,6 +11,7 @@ tags:
   - paths
 sources:
   - "Slock thread #yatoro:1c5eacba msg=5c870466 — coordinator resource inventory 2026-05-27"
+  - "Slock task #11 #yatoro:60f8bbf7 — confirmed Git-backed Stardust-Wiki path 2026-05-30"
 ---
 
 # Resources
@@ -54,12 +55,12 @@ sources:
 
 | 项 | 路径 |
 |---|---|
-| vault root | `/Users/rancune/Library/Mobile Documents/iCloud~md~obsidian/Documents/Stardust-Wiki` |
-| Obsidian config | `/Users/rancune/Library/Mobile Documents/iCloud~md~obsidian/Documents/Stardust-Wiki/.obsidian` |
-| wiki content | `<vault>/wiki/{llm,life,...}` |
+| wiki root | `/Users/rancune/Work/rancune/stardust` |
+| git root | `/Users/rancune/Work/rancune/stardust/.git` |
+| wiki content | `/Users/rancune/Work/rancune/stardust/wiki/{llm,life,...}` |
 | 系统地图入口 | [[life/stack/index\|Stack — System Map]] |
 
-特性：iCloud 同步，无 git；写入后等 iCloud sync 完成；多设备先让主写入设备完整同步再 reindex；批量改 wikilink 后用 Obsidian unresolved-link 面板验收。
+特性：Git-backed wiki。涉及 memory consolidation / wiki restructuring 的写入应先看 `git status`，落地后用 diff/review 确认，再 commit 或交给用户决定提交时机。不要把 `.git` 放进 iCloud 自动同步目录。
 
 ## 本地 Yatoro State
 
