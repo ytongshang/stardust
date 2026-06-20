@@ -19,46 +19,60 @@ tags:
 ## 使用原则
 
 - 不以“项目”为中心，以“概念”为中心。
+- 每个概念是一个目录：`index.md` 写概念本身，`uxarts-agent.md` 写我们自己的实现，后续外部实现或特别想法放在同目录下的新文件。
 - 外部来源可以是 GitHub、X/Twitter、文章、论文、release notes。
-- 如果外部实现只是换名覆盖已有概念，只在对应文件的 `Related Implementations` 里记一行。
-- 如果外部实现有新的边界、失败恢复、eval、policy、trace 或上下文策略，再单独展开。
+- 如果外部实现只是换名覆盖已有概念，只在对应概念目录下简短记录，不要展开成长文。
+- 如果外部实现有新的边界、失败恢复、eval、policy、trace 或上下文策略，再在对应概念目录下单独建文件。
 - 业务词和 runtime 词分开：`mode/stage/sub_agent_type` 是业务路由；input/context/tool/workspace/lifecycle 才是通用 harness 概念。
 
 ## 概念树
 
 ### Runtime
 
-- [[harness/runtime/agent-loop|Agent Loop]] — 模型调用、工具执行、handoff、transfer、interrupt、final output。
-- [[harness/runtime/run-ledger|Run Ledger]] — `RunItem` 事件流，如何替代普通 messages 成为可恢复事实日志。
+- [[harness/runtime/agent-loop/index|Agent Loop]] — 模型调用、工具执行、handoff、transfer、interrupt、final output。
+- [[harness/runtime/run-ledger/index|Run Ledger]] — `RunItem` 事件流，如何替代普通 messages 成为可恢复事实日志。
 
 ### Context
 
-- [[harness/context/input-transform|Input Transform]] — raw input 到 LLM user message 的转换。
-- [[harness/context/context-injection|Context Injection]] — 首轮、每轮、压缩后、子 agent 启动时注入什么。
-- [[harness/context/compaction|Compaction]] — 触发、summary、`UxMessageTrimItem`、压缩后上下文拼接。
+- [[harness/context/input-transform/index|Input Transform]] — raw input 到 LLM user message 的转换。
+- [[harness/context/context-injection/index|Context Injection]] — 首轮、每轮、压缩后、子 agent 启动时注入什么。
+- [[harness/context/compaction/index|Compaction]] — 触发、summary、`UxMessageTrimItem`、压缩后上下文拼接。
 
 ### Tools / Policy
 
-- [[harness/tools/tool-system|Tool System]] — tool schema、参数修复、错误回传、并行/顺序执行、interrupted tool。
-- [[harness/tools/tool-profile-policy|Tool Profile & Policy]] — stage/mode 工具裁剪、plan mode、sub-agent 权限、plugin/skill 动态工具。
+- [[harness/tools/tool-system/index|Tool System]] — tool schema、参数修复、错误回传、并行/顺序执行、interrupted tool。
+- [[harness/tools/tool-profile-policy/index|Tool Profile & Policy]] — stage/mode 工具裁剪、plan mode、sub-agent 权限、plugin/skill 动态工具。
 
 ### Workspace / Memory
 
-- [[harness/workspace/workspace-artifacts|Workspace & Artifacts]] — `Codebase`、attachment、snapshot、editor policy、sub-agent merge。
-- [[harness/memory/memory-capability|Memory & Capability]] — project memory、wiki memory、plugin/skill/capability snapshot。
+- [[harness/workspace/workspace-artifacts/index|Workspace & Artifacts]] — `Codebase`、attachment、snapshot、editor policy、sub-agent merge。
+- [[harness/memory/memory-capability/index|Memory & Capability]] — project memory、wiki memory、plugin/skill/capability snapshot。
 
 ### Multi-Agent
 
-- [[harness/multi-agent/subagents|Subagents]] — inline subagent、background subagent、AskMainAgent、SendMessage、TaskStop、merge。
+- [[harness/multi-agent/subagents/index|Subagents]] — inline subagent、background subagent、AskMainAgent、SendMessage、TaskStop、merge。
 
 ### Lifecycle
 
-- [[harness/lifecycle/center-orchestrator|Center Orchestrator]] — queue、heartbeat、pending、retry、complete、stop。
+- [[harness/lifecycle/center-orchestrator/index|Center Orchestrator]] — queue、heartbeat、pending、retry、complete、stop。
 
 ### Observability / Research
 
-- [[harness/observability/trace-eval|Trace & Eval]] — run item trace、hooks、fake item report、未来 replay/eval。
-- [[harness/research/collection-workflow|Research Collection Workflow]] — 如何收集 GitHub/X/文章/论文，并按概念去重。
+- [[harness/observability/trace-eval/index|Trace & Eval]] — run item trace、hooks、fake item report、未来 replay/eval。
+- [[harness/research/collection-workflow/index|Research Collection Workflow]] — 如何收集 GitHub/X/文章/论文，并按概念去重。
+
+## 概念目录结构
+
+推荐结构：
+
+```text
+concept-name/
+  index.md          # 概念定义、边界、子问题、导航
+  uxarts-agent.md   # uxarts-agent / uxa-center 当前实现
+  some-project.md   # 外部实现或特别想法，按需增加
+```
+
+新增外部材料时，优先落到已有概念目录；只有找不到合适位置时，再新增概念目录。
 
 ## uxarts-agent 主要代码入口
 

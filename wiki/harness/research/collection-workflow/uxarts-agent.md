@@ -49,12 +49,12 @@ tags:
 如果外部材料只是覆盖已有概念：
 
 - 不单独写长文。
-- 在对应概念文件的 `Related Implementations` 里加一行。
+- 在对应概念目录下简短记录，或追加到该目录已有外部实现笔记。
 - 简短说明它的命名和 uxarts-agent 对应关系。
 
 如果外部材料有新东西：
 
-- 写进对应概念文件。
+- 写进对应概念目录。
 - 新增 `External Ideas` 或 `Implementation Notes` 小节。
 - 说明它解决了什么问题，和 uxarts-agent 的差异是什么。
 
