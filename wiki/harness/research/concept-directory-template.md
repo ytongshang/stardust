@@ -17,8 +17,9 @@ tags:
 ```text
 concept-name/
   index.md
-  uxarts-agent.md
-  external-source-name.md
+  implementations/
+    uxarts-agent.md
+    external-source-name.md
 ```
 
 ## index.md
@@ -26,14 +27,19 @@ concept-name/
 写概念本身：
 
 - 这个概念是什么。
-- 它解决什么问题。
+- 它解决什么问题，为什么 agent harness 里需要单独建模。
+- 常见怎么做：核心对象、流程、策略、边界和取舍。
+- 这么做有什么优势，例如可维护性、可复用性、可测试性、可解释性、可靠性或成本控制。
+- 它和相邻概念的边界是什么，避免把 application-specific implementation、运行时机制和上下文策略混在同一层级。
 - 常见子问题。
 - 本目录有哪些实现笔记。
 - 什么样的外部材料值得记录。
 
+不要只写一句定义。`index.md` 应该让读者明白这个概念为什么存在、通常怎么落地，以及什么样的外部实现值得继续研究。
+
 不要在 `index.md` 里写太多具体项目实现。
 
-## uxarts-agent.md
+## implementations/uxarts-agent.md
 
 只写我们现在的实现：
 
@@ -43,7 +49,7 @@ concept-name/
 - 关键代码锚点。
 - 不能丢的细节。
 
-## external-source-name.md
+## implementations/external-source-name.md
 
 写某个外部项目、文章、论文或 thread 的特别想法：
 

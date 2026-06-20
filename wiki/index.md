@@ -7,6 +7,7 @@
 
 - [[llm/index|LLM / AI / Agent]] — LLM principles, prompting, caching, agent architecture, skills
 - [[harness/index|Agent Harness]] — agent runtime 概念树：uxarts-agent 现状、通用 harness 边界、外部实现去重
+- [[loop/index|Loop Engineering]] — agent 外层生产循环：触发、任务发现、执行、验证、重试、状态更新
 - [[life/index|Life / Personal Workflows]] — 日常生活、个人工作流、自动化 SOP
 
 ## How to navigate
