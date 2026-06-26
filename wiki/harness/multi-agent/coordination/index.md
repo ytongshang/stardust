@@ -43,3 +43,4 @@ Coordination 处理多 agent 的任务分配、fanout、依赖、归属、冲突
 ## 目录
 
 - [[harness/multi-agent/coordination/implementations/uxarts-agent|uxarts-agent 实现]]
+- [[harness/multi-agent/coordination/implementations/agentspace|AgentSpace 实现]]

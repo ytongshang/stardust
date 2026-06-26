@@ -43,6 +43,7 @@ Tool Availability 决定某一轮、某个 agent profile、某个 task state 下
 ## 目录
 
 - [[harness/tooling/tool-availability/implementations/uxarts-agent|uxarts-agent 实现]]
+- [[harness/tooling/tool-availability/implementations/agentspace|AgentSpace 实现]]
 
 ## 后续收集
 

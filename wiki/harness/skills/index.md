@@ -8,3 +8,4 @@ Skills 层记录可按需发现、加载、落地和版本化的能力包。Skil
 - [[harness/skills/skill-loading/index|Skill Loading]]
 - [[harness/skills/skill-materialization/index|Skill Materialization]]
 - [[harness/skills/skill-versioning/index|Skill Versioning]]
+- [[harness/skills/skill-evaluation/index|Skill Evaluation]]

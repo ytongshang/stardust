@@ -2,7 +2,7 @@
 title: Context Injection
 type: concept
 created: 2026-06-20
-updated: 2026-06-20
+updated: 2026-06-21
 sources:
   - uxarts-agent/uxarts/web/modules/getui/task/prototype/prototype_generate_user_input_creator.py
   - uxarts-agent/uxarts/web/modules/getui/task/async_sub_agent/general_purpose.py
@@ -47,6 +47,20 @@ Context Injection 决定“哪些上下文，在什么时机，作为什么 mess
 - model init messages: 首轮初始化。
 - post-compact context: 压缩边界后重新注入。
 - business reminders: 例如 architecture planning、README sync、language rule。
+
+## 原来写在一起的问题
+
+早期实现里，很多 context 是通过同一条 user-adjacent reminder 或同一个 context builder 拼进去的。这样会把几类不同生命周期的内容混在一起：
+
+- first-turn static context：capability static context、memory directory 状态、wiki memory 概览。
+- every-turn live context：capability runtime state、plugins/secrets、base_h5_url、miniprogram、file_changes。
+- business reminders：architecture planning、README sync、language rule。
+- recovery context：compact 后要重新注入的 static blocks。
+
+这些内容看起来都叫 context，但刷新策略不同。static context 适合首轮或 after compact；live context 需要每轮刷新；business reminders 更像 task policy block；recovery context 只在压缩边界后补回来。把它们写在一起，会导致两个风险：
+
+- 重复注入：例如 compressed 状态导致 first-turn static context 后续每轮都被当作新 context。
+- 错误可见性：某些 heavy context 或权限相关信息不应该给 read-only sub-agent 或所有 child agent。
 
 ## uxarts-agent 怎么做
 
@@ -95,6 +109,23 @@ class ContextInjectionPolicy:
     on_after_compact: list[ContextBlockProvider]
     on_sub_agent_start: list[ContextBlockProvider]
 ```
+
+更细一点，`ContextBlockProvider` 不应该只是返回一段字符串，还应该声明：
+
+```python
+@dataclass
+class ContextBlockProvider:
+    source: ContextSource
+    timing: set[InjectionTiming]
+    freshness: Literal["static", "run_snapshot", "per_turn", "event_triggered"]
+    visibility: set[AgentVisibility]
+    cache_policy: CachePolicy
+    budget_cost: int | None
+
+    async def build(self, context: RunContext) -> ContextBlock: ...
+```
+
+这样 `project structure`、`memory`、`capability snapshot`、`file changes`、`runtime reminders` 不再靠“写在一起”的 prompt 顺序区分，而是靠 provider metadata 决定何时出现、给谁看、是否缓存、是否在 compact 后恢复。
 
 ## Related Implementations
 

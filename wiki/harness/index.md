@@ -2,7 +2,7 @@
 title: Agent Harness
 type: concept-index
 created: 2026-06-20
-updated: 2026-06-20
+updated: 2026-06-21
 sources:
   - uxarts-agent
   - uxa-center
@@ -21,7 +21,10 @@ tags:
 - 二级目录必须是通用问题：外部 harness 也可能有对应实现，即使名字不同。
 - uxarts-agent 特有的 `mode/stage/round_extra/CapabilitySnapshot` 等，只写进对应 `implementations/uxarts-agent.md`。
 - 外部材料如果只是覆盖已有概念，只在对应目录下简短记录；有新的抽象、失败恢复、eval、policy、trace、上下文策略时再单独展开。
-- Research 是知识库流程，不算 harness 本体概念。
+- Research 是发现与分流层，不算 harness 本体概念。
+- 每日 radar 的执行流程、源码下载和去重状态放在
+  `/Users/rancune/Work/agent/automations/agent-harness-radar/`，不要写进 wiki。
+- 每日 radar 先写到 stardust 分支 `radar/YYYY-MM-DD`，次日复核后再决定是否合入概念树。
 
 ## 概念树
 
@@ -30,6 +33,7 @@ tags:
 - [[harness/runtime/agent-loop/index|Agent Loop]] — 模型调用循环、工具调用解析、继续/结束判断。
 - [[harness/runtime/event-log/index|Event Log]] — 可恢复的运行事件流，uxarts-agent 里对应 `RunItem`。
 - [[harness/runtime/handoff-transfer/index|Handoff & Transfer]] — agent 间移交、流程转交与当前执行主体切换。
+- [[harness/runtime/runtime-brokerage/index|Runtime Brokerage]] — 多个 external runtimes 的路由、resume、fallback 和能力归一化。
 
 ### Context
 
@@ -57,6 +61,7 @@ tags:
 - [[harness/skills/skill-loading/index|Skill Loading]] — 何时把 skill 内容加载进上下文。
 - [[harness/skills/skill-materialization/index|Skill Materialization]] — skill 作为文件包/资源落地。
 - [[harness/skills/skill-versioning/index|Skill Versioning]] — skill 版本、更新、兼容性。
+- [[harness/skills/skill-evaluation/index|Skill Evaluation]] — 衡量 skill 是否真的改变 agent 行为。
 
 ### Workspace
 
@@ -106,7 +111,7 @@ tags:
 
 ### Research
 
-- [[harness/research/index|Research]] — 外部项目、文章、论文、X/Twitter thread 的概念化收集流程。
+- [[harness/research/index|Research]] — 外部材料的发现、分流与概念化入口；执行工作流在 automation 目录，不在 wiki 内。
 
 ## 目录约定
 
